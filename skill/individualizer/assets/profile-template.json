@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.1",
+  "id": "new-identity",
+  "name": "New identity",
+  "version": "1.0.0",
+  "status": "draft",
+  "language": "unspecified",
+  "audience": [],
+  "personality": [],
+  "voice": {
+    "tone": [],
+    "preferred_phrases": [],
+    "avoid_phrases": [],
+    "structure": [],
+    "sample": "",
+    "contextual_tone": {}
+  },
+  "visual": {
+    "palette": [],
+    "typography": {
+      "heading": null,
+      "body": null,
+      "fallbacks": []
+    },
+    "layout": [],
+    "imagery": [],
+    "motif": null,
+    "avoid": [],
+    "tokens": {}
+  },
+  "media": {},
+  "accessibility": {
+    "contrast_target": null,
+    "alt_text": true
+  },
+  "approved_by_user": false,
+  "changelog": [],
+  "language_settings": {},
+  "editorial": {
+    "edit_depth": "standard",
+    "review_phrases": [],
+    "prohibited_phrases": [],
+    "protected_terms": [],
+    "phrase_exceptions": []
+  },
+  "samples": []
+}

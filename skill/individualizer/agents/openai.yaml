@@ -1,0 +1,7 @@
+interface:
+  display_name: "Individualizer"
+  short_description: "Personal voice and visual identity across languages"
+  brand_color: "#15324F"
+  default_prompt: "Use $individualizer to refine this text while preserving its meaning and my voice."
+policy:
+  allow_implicit_invocation: true

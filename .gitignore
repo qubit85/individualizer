@@ -1,0 +1,12 @@
+source/
+profiles/
+work/
+IMPORT-STATUS.md
+.agents/
+.claude/
+.env
+.env.*
+!.env.example
+.DS_Store
+__pycache__/
+*.pyc

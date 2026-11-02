@@ -1,0 +1,162 @@
+{
+  "date": "2026-11-02",
+  "skill_version": "1.2.0",
+  "method": "Fresh CLI sessions; source inputs without reference answers; configured host defaults; one temporary skill copy per run. Only synthetic inputs and sanitized outputs are published.",
+  "limits": [
+    "Small, non-randomized sample; no baseline comparison or human preference study.",
+    "Implicit activation was tested before the final output-format clarification; description and routing were unchanged. Explicit tests were rerun after that clarification.",
+    "The final Claude explicit run emitted no reference-read tool calls; the initial explicit run and both implicit runs did read the relevant guides. Consistent reference loading is not established.",
+    "Spanish and mixed-language examples are smoke coverage, not native-speaker validation.",
+    "Visual/profile-creation tasks were not executed. File writes were restricted, so absence of profile writes does not prove unrestricted write restraint."
+  ],
+  "initial_finding": "Claude initially returned fenced JSON plus unrequested change notes. Added an explicit output-format rule; both final explicit runs returned parseable JSON without appended notes.",
+  "runs": [
+    {
+      "runtime": "codex",
+      "scenario": "explicit",
+      "cli_version": "codex-cli 0.166.0-alpha.5.1",
+      "model": "configured host default; not reported in captured events",
+      "started_utc": "20261102T172205827781Z",
+      "skill_entrypoint_sha256": "55ce2b937ecbc4ba397dd648e761fe74061a0f4aeeea084d2b0e017a7a0dfa5a",
+      "explicit_invocation_requested": true,
+      "skill_tool_invoked": false,
+      "read_skill_files": [
+        "references/language-de.md",
+        "references/language-en.md",
+        "references/multilingual.md",
+        "references/text-editing.md"
+      ],
+      "output": {
+        "de-facts": "Der Pilot senkt die Bearbeitungszeit möglicherweise um 12 %. Die Schätzung beruht auf acht Fällen. Ein Produktionstest steht noch aus.",
+        "en-evidence": "Two testers said the search felt faster, although no timings have been recorded. Offline mode is planned, not available.",
+        "de-technical": "Der Schätzer ist robust gegenüber Ausreißern. Nicht die Temperatur, sondern der Druck löste den Alarm aus.",
+        "en-three-items": "The review covers authentication, authorisation, and audit logging. The results are provisional.",
+        "de-address": "Bitte senden Sie die Unterlagen bis zum 12. November. Eine Zusage können wir Ihnen derzeit noch nicht geben.",
+        "en-point-edit": "I like this odd little tool. It exports CSV. I still hate its icon.",
+        "es-fallback": "El formulario admite archivos PDF. Si necesita ayuda, puede escribirnos. No podemos garantizar una respuesta el mismo día.",
+        "mixed": "Der Test läuft noch. The result may change. Release freeze bleibt der interne Begriff.",
+        "protected": "The reviewer wrote “a pivotal moment”. Run `tool --mode safe` and see [the report](https://example.org/a?x=1).",
+        "no-autobiography": "The setup guide walks you through three steps. If a step fails, please contact support.",
+        "profile-update-boundary": "Bitte senden Sie die Datei bis Dienstag. Vielen Dank!"
+      },
+      "review": "Pass for stated text/scope constraints in developing-agent review; not blinded human evaluation."
+    },
+    {
+      "runtime": "codex",
+      "scenario": "implicit-de",
+      "cli_version": "codex-cli 0.166.0-alpha.5.1",
+      "model": "configured host default; not reported in captured events",
+      "started_utc": "20261102T172036208252Z",
+      "skill_entrypoint_sha256": "a350454e03d3cfdcc6ca208f11d456464043045728732b54836915881d45b532",
+      "explicit_invocation_requested": false,
+      "skill_tool_invoked": false,
+      "read_skill_files": [
+        "SKILL.md",
+        "references/language-de.md",
+        "references/text-editing.md"
+      ],
+      "output": "Bitte senden Sie die Unterlagen bis zum 12. November. Eine Zusage können wir Ihnen derzeit noch nicht geben.",
+      "review": "Pass for stated text/scope constraints in developing-agent review; not blinded human evaluation."
+    },
+    {
+      "runtime": "codex",
+      "scenario": "implicit-en",
+      "cli_version": "codex-cli 0.166.0-alpha.5.1",
+      "model": "configured host default; not reported in captured events",
+      "started_utc": "20261102T172037888909Z",
+      "skill_entrypoint_sha256": "a350454e03d3cfdcc6ca208f11d456464043045728732b54836915881d45b532",
+      "explicit_invocation_requested": false,
+      "skill_tool_invoked": false,
+      "read_skill_files": [
+        "SKILL.md",
+        "references/language-en.md",
+        "references/text-editing.md"
+      ],
+      "output": "Two testers said the search felt faster, although no timings have been recorded. Offline mode is planned, not available.",
+      "review": "Pass for stated text/scope constraints in developing-agent review; not blinded human evaluation."
+    },
+    {
+      "runtime": "codex",
+      "scenario": "unrelated",
+      "cli_version": "codex-cli 0.166.0-alpha.5.1",
+      "model": "configured host default; not reported in captured events",
+      "started_utc": "20261102T172123159934Z",
+      "skill_entrypoint_sha256": "55ce2b937ecbc4ba397dd648e761fe74061a0f4aeeea084d2b0e017a7a0dfa5a",
+      "explicit_invocation_requested": false,
+      "skill_tool_invoked": false,
+      "read_skill_files": [],
+      "output": "391",
+      "review": "Pass for stated text/scope constraints in developing-agent review; not blinded human evaluation."
+    },
+    {
+      "runtime": "claude",
+      "scenario": "explicit",
+      "cli_version": "2.1.289 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "started_utc": "20261102T172204587878Z",
+      "skill_entrypoint_sha256": "55ce2b937ecbc4ba397dd648e761fe74061a0f4aeeea084d2b0e017a7a0dfa5a",
+      "explicit_invocation_requested": true,
+      "skill_tool_invoked": false,
+      "read_skill_files": [],
+      "output": {
+        "de-facts": "Der Pilot könnte die Bearbeitungszeit um 12 % senken. Die Schätzung beruht auf acht Fällen. Ein Produktionstest steht noch aus.",
+        "en-evidence": "Two testers said the search felt faster, although no timings have been recorded. Offline mode is planned but not available.",
+        "de-technical": "Der Schätzer ist robust gegenüber Ausreißern. Nicht die Temperatur, sondern der Druck löste den Alarm aus.",
+        "en-three-items": "The review covers authentication, authorisation, and audit logging. The results are provisional.",
+        "de-address": "Bitte senden Sie uns die Unterlagen bis zum 12. November. Eine Zusage können wir Ihnen derzeit noch nicht geben.",
+        "en-point-edit": "I like this odd little tool. It exports CSV. I still hate its icon.",
+        "es-fallback": "El formulario admite archivos PDF. Si necesita ayuda, puede escribirnos. No podemos garantizar una respuesta el mismo día.",
+        "mixed": "Der Test läuft noch. The result may change. Release freeze bleibt der interne Begriff.",
+        "protected": "The reviewer wrote “a pivotal moment”. Run `tool --mode safe` and see [the report](https://example.org/a?x=1).",
+        "no-autobiography": "The setup guide walks you through three steps. If one of them goes wrong, please do contact support.",
+        "profile-update-boundary": "Bitte senden Sie die Datei bis Dienstag. Vielen Dank!"
+      },
+      "review": "Pass for stated text/scope constraints in developing-agent review; not blinded human evaluation."
+    },
+    {
+      "runtime": "claude",
+      "scenario": "implicit-de",
+      "cli_version": "2.1.289 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "started_utc": "20261102T172037890103Z",
+      "skill_entrypoint_sha256": "a350454e03d3cfdcc6ca208f11d456464043045728732b54836915881d45b532",
+      "explicit_invocation_requested": false,
+      "skill_tool_invoked": true,
+      "read_skill_files": [
+        "references/language-de.md",
+        "references/text-editing.md"
+      ],
+      "output": "Bitte senden Sie uns die Unterlagen bis zum 12. November zu. Eine Zusage können wir Ihnen derzeit noch nicht geben.",
+      "review": "Pass for stated text/scope constraints in developing-agent review; not blinded human evaluation."
+    },
+    {
+      "runtime": "claude",
+      "scenario": "implicit-en",
+      "cli_version": "2.1.289 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "started_utc": "20261102T172038208859Z",
+      "skill_entrypoint_sha256": "a350454e03d3cfdcc6ca208f11d456464043045728732b54836915881d45b532",
+      "explicit_invocation_requested": false,
+      "skill_tool_invoked": true,
+      "read_skill_files": [
+        "references/language-en.md",
+        "references/text-editing.md"
+      ],
+      "output": "Two testers said the search felt faster, though no timings have been recorded. Offline mode is planned but not yet available.",
+      "review": "Pass for stated text/scope constraints in developing-agent review; not blinded human evaluation."
+    },
+    {
+      "runtime": "claude",
+      "scenario": "unrelated",
+      "cli_version": "2.1.289 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "started_utc": "20261102T172121074595Z",
+      "skill_entrypoint_sha256": "55ce2b937ecbc4ba397dd648e761fe74061a0f4aeeea084d2b0e017a7a0dfa5a",
+      "explicit_invocation_requested": false,
+      "skill_tool_invoked": false,
+      "read_skill_files": [],
+      "output": "391",
+      "review": "Pass for stated text/scope constraints in developing-agent review; not blinded human evaluation."
+    }
+  ]
+}

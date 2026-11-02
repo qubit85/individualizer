@@ -1,0 +1,150 @@
+{
+  "evaluation_type": "Same-agent author review, not an independent model or reader benchmark",
+  "reviewed_on": "2026-11-02",
+  "cases": [
+    {
+      "id": "de-facts",
+      "language": "de-DE",
+      "request": "Formuliere das sachlich und natürlich; keine neuen Zusagen.",
+      "input": "Es ist wichtig zu betonen, dass der Pilot die Bearbeitungszeit möglicherweise um 12 % senkt. Die Schätzung beruht auf acht Fällen. Ein Produktionstest steht noch aus.",
+      "output": "Der Pilot senkt die Bearbeitungszeit möglicherweise um 12 %. Die Schätzung beruht auf acht Fällen. Ein Produktionstest steht noch aus.",
+      "checks": [
+        "12 % and eight cases retained",
+        "uncertainty retained",
+        "production test remains outstanding"
+      ],
+      "review": "Pass in author review: only empty framing removed."
+    },
+    {
+      "id": "en-evidence",
+      "language": "en-GB",
+      "request": "Light edit; preserve attribution and uncertainty.",
+      "input": "It is worth noting that two testers said the search felt faster, although no timings have been recorded. Offline mode is planned, not available.",
+      "output": "Two testers said the search felt faster, although no timings have been recorded. Offline mode is planned, not available.",
+      "checks": [
+        "subjective attribution retained",
+        "no benchmark invented",
+        "meaningful contrast retained"
+      ],
+      "review": "Pass in author review: source limitation and availability preserved."
+    },
+    {
+      "id": "de-technical",
+      "language": "de",
+      "request": "Prüfe den Text auf unnötige KI-Floskeln.",
+      "input": "Der Schätzer ist robust gegenüber Ausreißern. Nicht die Temperatur, sondern der Druck löste den Alarm aus.",
+      "output": "Der Schätzer ist robust gegenüber Ausreißern. Nicht die Temperatur, sondern der Druck löste den Alarm aus.",
+      "checks": [
+        "robust retained as technical term",
+        "causal contrast retained",
+        "no forced rewrite"
+      ],
+      "review": "Pass in author review: no edit warranted."
+    },
+    {
+      "id": "en-three-items",
+      "language": "en",
+      "request": "Make this sound natural without changing the scope.",
+      "input": "The review covers authentication, authorisation, and audit logging. The results are provisional.",
+      "output": "The review covers authentication, authorisation, and audit logging. The results are provisional.",
+      "checks": [
+        "all three real items retained",
+        "provisional remains",
+        "UK spelling retained"
+      ],
+      "review": "Pass in author review: original already clear."
+    },
+    {
+      "id": "de-address",
+      "language": "de-DE",
+      "request": "Vereinfache die Formulierung und bleibe bei Sie.",
+      "input": "Wir möchten Sie darum bitten, eine Übermittlung der Unterlagen bis zum 12. November vorzunehmen. Eine Zusage können wir Ihnen derzeit noch nicht geben.",
+      "output": "Bitte senden Sie uns die Unterlagen bis zum 12. November. Wir können Ihnen derzeit noch nichts zusagen.",
+      "checks": [
+        "Sie retained",
+        "date unchanged",
+        "no commitment added"
+      ],
+      "review": "Pass in author review: direct request with unchanged limit."
+    },
+    {
+      "id": "en-point-edit",
+      "language": "en",
+      "request": "Only edit the second sentence.",
+      "input": "I like this odd little tool. It is important to note that it exports CSV. I still hate its icon.",
+      "output": "I like this odd little tool. It exports CSV. I still hate its icon.",
+      "checks": [
+        "first and last sentences exact",
+        "author's opinion retained",
+        "scope respected"
+      ],
+      "review": "Pass in author review: only requested sentence changed."
+    },
+    {
+      "id": "es-fallback",
+      "language": "es",
+      "request": "Haz este texto más natural, sin cambiar su significado ni el tratamiento formal.",
+      "input": "Es importante destacar que el formulario admite archivos PDF. Si necesita ayuda, puede escribirnos. No podemos garantizar una respuesta el mismo día.",
+      "output": "El formulario admite archivos PDF. Si necesita ayuda, puede escribirnos. No podemos garantizar una respuesta el mismo día.",
+      "checks": [
+        "Spanish remains Spanish",
+        "formal address retained",
+        "no same-day guarantee introduced"
+      ],
+      "review": "Author review only: narrow removal of redundant framing; native-speaker validation pending."
+    },
+    {
+      "id": "mixed",
+      "language": "de/en",
+      "request": "Glätte nur die Floskeln; behalte den Sprachwechsel.",
+      "input": "Es ist wichtig zu betonen, dass der Test noch läuft. The result may change. Release freeze bleibt der interne Begriff.",
+      "output": "Der Test läuft noch. The result may change. Release freeze bleibt der interne Begriff.",
+      "checks": [
+        "no translation",
+        "may retained",
+        "internal term exact"
+      ],
+      "review": "Pass in author review: language boundaries unchanged."
+    },
+    {
+      "id": "protected",
+      "language": "en",
+      "request": "Light edit. Keep the exact quotation and command.",
+      "input": "It is important to note that the reviewer wrote “a pivotal moment”. Run `tool --mode safe` and see [the report](https://example.org/a?x=1).",
+      "output": "The reviewer wrote “a pivotal moment”. Run `tool --mode safe` and see [the report](https://example.org/a?x=1).",
+      "checks": [
+        "quote exact despite review vocabulary",
+        "command exact",
+        "URL exact"
+      ],
+      "review": "Pass in author review: protected spans preserved."
+    },
+    {
+      "id": "no-autobiography",
+      "language": "en",
+      "request": "Make this warmer and more personal without inventing experience.",
+      "input": "The setup guide has three steps. Contact support if a step fails.",
+      "output": "The setup guide walks you through three steps. If a step fails, contact support.",
+      "checks": [
+        "no invented experience",
+        "no success guarantee",
+        "three steps retained"
+      ],
+      "review": "Pass in author review: reader address provides warmth."
+    },
+    {
+      "id": "profile-update-boundary",
+      "language": "de",
+      "request": "Mach nur diese E-Mail etwas wärmer.",
+      "input": "Bitte senden Sie die Datei bis Dienstag.",
+      "output": "Bitte senden Sie mir die Datei bis Dienstag. Vielen Dank!",
+      "checks": [
+        "artifact-only edit",
+        "no persistent profile write",
+        "deadline and formality retained"
+      ],
+      "review": "Needs revision in initial author review: 'mir' adds an unsupported recipient. Corrected output below.",
+      "corrected_output": "Bitte senden Sie die Datei bis Dienstag. Vielen Dank!"
+    }
+  ]
+}

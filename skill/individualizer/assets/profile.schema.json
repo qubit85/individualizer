@@ -1,0 +1,402 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Individualizer profile 1.0/1.1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "name",
+    "version",
+    "status",
+    "language",
+    "audience",
+    "personality",
+    "voice",
+    "visual",
+    "media",
+    "accessibility",
+    "approved_by_user",
+    "changelog"
+  ],
+  "properties": {
+    "schema_version": {
+      "enum": [
+        "1.0",
+        "1.1"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved"
+      ]
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audience": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "personality": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "voice": {
+      "type": "object",
+      "required": [
+        "tone",
+        "preferred_phrases",
+        "avoid_phrases",
+        "structure",
+        "sample"
+      ],
+      "properties": {
+        "tone": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "preferred_phrases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "avoid_phrases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "structure": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sample": {
+          "type": "string"
+        },
+        "contextual_tone": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "visual": {
+      "type": "object",
+      "required": [
+        "palette",
+        "typography",
+        "layout",
+        "imagery",
+        "motif",
+        "avoid"
+      ],
+      "properties": {
+        "palette": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "role",
+              "hex"
+            ],
+            "properties": {
+              "role": {
+                "type": "string"
+              },
+              "hex": {
+                "type": "string",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              }
+            }
+          }
+        },
+        "typography": {
+          "type": "object",
+          "required": [
+            "heading",
+            "body",
+            "fallbacks"
+          ],
+          "properties": {
+            "heading": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "body": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "fallbacks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "layout": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imagery": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "motif": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tokens": {
+          "type": "object"
+        }
+      }
+    },
+    "media": {
+      "type": "object",
+      "properties": {
+        "blog": {
+          "type": "object"
+        },
+        "graphics": {
+          "type": "object"
+        },
+        "infographic": {
+          "type": "object"
+        },
+        "slides": {
+          "type": "object"
+        },
+        "documents": {
+          "type": "object"
+        },
+        "email": {
+          "type": "object"
+        }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "properties": {
+        "contrast_target": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "alt_text": {
+          "type": "boolean"
+        }
+      }
+    },
+    "approved_by_user": {
+      "type": "boolean"
+    },
+    "changelog": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "object"
+        ]
+      }
+    },
+    "language_settings": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "formality": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "address": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "spelling": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "inclusive_language": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "punctuation": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "terminology": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "editorial": {
+      "type": "object",
+      "properties": {
+        "edit_depth": {
+          "enum": [
+            "light",
+            "standard",
+            "deep"
+          ]
+        },
+        "review_phrases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "prohibited_phrases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "protected_terms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "phrase_exceptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "language",
+          "context",
+          "kind",
+          "approved_by_user"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "own",
+              "reference",
+              "generated"
+            ]
+          },
+          "source_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "approved_by_user": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "approved"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "approved_by_user": {
+            "const": true
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "approved_by_user": {
+            "const": false
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}

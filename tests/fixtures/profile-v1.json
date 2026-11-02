@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "id": "example-brand",
+  "name": "Example Brand",
+  "version": "1.0.0",
+  "status": "draft",
+  "language": "en",
+  "audience": [],
+  "personality": [
+    "curious",
+    "precise"
+  ],
+  "voice": {
+    "tone": [],
+    "preferred_phrases": [],
+    "avoid_phrases": [],
+    "structure": [],
+    "sample": ""
+  },
+  "visual": {
+    "palette": [
+      {
+        "role": "primary",
+        "hex": "#15324F"
+      }
+    ],
+    "typography": {
+      "heading": "unspecified",
+      "body": "unspecified",
+      "fallbacks": []
+    },
+    "layout": [],
+    "imagery": [],
+    "motif": "unspecified",
+    "avoid": []
+  },
+  "media": {
+    "blog": {},
+    "graphics": {},
+    "infographic": {},
+    "slides": {},
+    "documents": {}
+  },
+  "accessibility": {
+    "contrast_target": "WCAG AA where applicable",
+    "alt_text": true
+  },
+  "approved_by_user": false,
+  "changelog": []
+}

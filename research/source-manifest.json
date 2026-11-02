@@ -1,0 +1,93 @@
+[
+  {
+    "id": "humanizer",
+    "url": "https://github.com/blader/humanizer/blob/main/SKILL.md",
+    "blob_sha": "19fc634208e8cc6ae55d4ff287152583216fd244",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "humanizer-license",
+    "url": "https://github.com/blader/humanizer/blob/main/LICENSE",
+    "blob_sha": "625297fb778f32eb39d3a5b97e3e3b611b7304d6",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "copy-editing",
+    "url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/copy-editing/SKILL.md",
+    "blob_sha": "7769981ddf9b2d2816a28e3fa2bb341e77503568",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "copywriting",
+    "url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/copywriting/SKILL.md",
+    "blob_sha": "2453731ab7a5e52535b7cf29beccbebe687d5a62",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "marketing-license",
+    "url": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE",
+    "blob_sha": "7c48dd638a9ebed49a8ef0c0c4eea90105381cdf",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "brand-guidelines",
+    "url": "https://github.com/borghei/Claude-Skills/blob/main/marketing/brand-guidelines/SKILL.md",
+    "blob_sha": "762c6140631ed1f35243941084461cfd6c500ea1",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "brand-license",
+    "url": "https://github.com/borghei/Claude-Skills/blob/main/LICENSE",
+    "blob_sha": "9d84f9e269c910c4ba7e636f6c3febce1c468ac4",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "canvas-design",
+    "url": "https://github.com/anthropics/skills/blob/main/skills/canvas-design/SKILL.md",
+    "blob_sha": "9f63fee82de84cd4230e1d0e322247b61eb4c94c",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "brand-official",
+    "url": "https://github.com/anthropics/skills/blob/main/skills/brand-guidelines/SKILL.md",
+    "blob_sha": "47c72c607bdb5dd81bdea5de2b5e4f3992a5fd59",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "humanizer-zh",
+    "url": "https://github.com/op7418/Humanizer-zh/blob/main/SKILL.md",
+    "blob_sha": "ef07b54da21a41d4a7e4fe0b0afb928f597eb684",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "canvas-license",
+    "url": "https://github.com/anthropics/skills/blob/main/skills/canvas-design/LICENSE.txt",
+    "blob_sha": "4f881c52d1f72f4cfb720e339e2d35c3058d01a9",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "brand-official-license",
+    "url": "https://github.com/anthropics/skills/blob/main/skills/brand-guidelines/LICENSE.txt",
+    "blob_sha": "4f881c52d1f72f4cfb720e339e2d35c3058d01a9",
+    "read_on": "2026-11-02",
+    "available": true
+  },
+  {
+    "id": "humanizer-zh-license",
+    "url": "https://github.com/op7418/Humanizer-zh/blob/main/LICENSE",
+    "blob_sha": "e43848adc64286ff652e9be646e18ae0606162c7",
+    "read_on": "2026-11-02",
+    "available": true
+  }
+]
