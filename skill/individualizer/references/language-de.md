@@ -9,6 +9,7 @@ Deutsch ist eine ausgearbeitete Schwerpunktsprache. Die folgenden Hinweise sind 
 - Übernimm die gewählte Form geschlechtergerechter Sprache. Fehlt eine Vorgabe, sind passende neutrale Bezeichnungen oft praktikabel; verändere dabei weder Rollen noch Personengruppen.
 - Fachbegriffe, etablierte Anglizismen und deutsche Komposita dürfen bleiben. Entscheidend ist, ob die Zielgruppe sie versteht und sie etwas präzise benennen.
 - Natürlichkeit kann sachlich, zurückhaltend oder literarisch sein. Keine automatische Verjüngung durch Slang, künstliche Fehler oder vertrauliche Anrede.
+- Höflichkeitszusätze wie „mir“ oder „uns“ legen einen Empfänger fest. Ergänze sie nur, wenn dieser aus Quelle oder Auftrag bekannt ist; sonst bewahre die offene Empfängerrolle auch bei einem wärmeren Ton. Ein schlichtes Dankeschön benötigt diese Ergänzung nicht.
 
 ## Wortwahl, Satzbau und Textstruktur
 

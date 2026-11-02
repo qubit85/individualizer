@@ -1,0 +1,21 @@
+{
+  "description": "Synthetic user requests for sequential profile-learning checks; no expected answers are passed to the runtime.",
+  "phases": [
+    {
+      "id": "learn",
+      "request": "Nutze das ausgewählte private Profil in private/profile.json und private/STYLE.md. Automatisches Lernen aus meinen Stilkorrekturen ist für dieses Profil bereits freigegeben. Hier sind meine Überarbeitungen zweier verschiedener deutscher LinkedIn-Posts für Fachkollegen. Post A vorher: 'Kennst du das Gefühl, wenn ein Pilot neue Möglichkeiten eröffnet? Der Pilot umfasst acht Fälle. Ein Produktionstest steht noch aus.' Meine Fassung A: 'Der Pilot umfasst acht Fälle. Ein Produktionstest steht noch aus.' Post B vorher: 'Was wäre, wenn wir den Export neu denken? Der Export unterstützt CSV. PDF folgt vielleicht später.' Meine Fassung B: 'Der Export unterstützt CSV. PDF folgt vielleicht später.' So passen diese Texte für mich. Berücksichtige das bei weiteren deutschen LinkedIn-Posts und lerne im Rahmen der bestehenden Freigabe daraus. Überarbeite jetzt diesen dritten Post: 'Hast du dich schon gefragt, was als Nächstes kommt? Der Test dauert drei Tage. Ein Ergebnis liegt noch nicht vor.'"
+    },
+    {
+      "id": "recall",
+      "request": "Nutze mein ausgewähltes Profil private/profile.json und private/STYLE.md. Erstelle drei voneinander unabhängige Texte als JSON mit den Schlüsseln linkedin_de, support_en und interview_de. Verwende für jeden Text ausschließlich die bei seinem Schlüssel genannten Angaben; ergänze keine Informationen aus den anderen Texten. linkedin_de: deutscher LinkedIn-Post für Fachkollegen auf Basis von 'Was wäre, wenn wir die Suche neu denken? Zwei Personen fanden die Suche schneller. Messwerte fehlen noch.' support_en: English support email based on 'Your export may take two minutes.' interview_de: eine einzelne formelle Interviewfrage dazu, wie die befragte Person das vorläufige Ergebnis bewertet. Gib nur gültiges JSON zurück."
+    },
+    {
+      "id": "one-off",
+      "request": "Nutze das Profil private/profile.json und private/STYLE.md für diese E-Mail. In der vorigen Überarbeitung hatte ich bereits darum gebeten, beim Sie zu bleiben und keine Ausrufezeichen zu verwenden. Aktuelle Fassung: 'Bitte senden Sie die Datei bis Dienstag.' Sachliche Korrektur: Die Frist ist Freitag. Mach nur diese E-Mail etwas wärmer, behalte meine bisherigen Korrekturen bei und leite daraus keine dauerhaften Stilvorlieben ab. Ändere keine Profildatei. Gib nur den fertigen Text zurück."
+    },
+    {
+      "id": "forget",
+      "request": "Vergiss die aus meinen beiden deutschen LinkedIn-Überarbeitungen erlernte Einstiegspräferenz. Entferne die betreffenden erlernten Regeln und ihre gespeicherten Belege aus private/profile.json und private/STYLE.md. Bewahre die davon unabhängige englische Support-Vorgabe und die übrigen Profilfelder. Lege keine neue Kopie des vergessenen Inhalts an. Bestätige kurz, was gespeichert wurde."
+    }
+  ]
+}

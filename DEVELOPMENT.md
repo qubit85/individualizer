@@ -1,13 +1,13 @@
-# Individualizer 1.2.0
+# Individualizer 1.3.0
 
-One shared package targets Codex and Claude Code. English and German have dedicated editorial guides; other languages use locale-aware adaptation. Profile schema 1.1 remains compatible with 1.0 profiles.
+One shared package targets Codex and Claude Code. English and German have dedicated editorial guides; other languages use locale-aware adaptation. Profile schema 1.2 adds scoped learning and remains compatible with 1.0/1.1 profiles.
 
 ## Layout
 
 - `skill/individualizer/`: distributable runtime instructions, references, templates, schema, and licenses.
 - `tests/`: structural/profile checks, source examples, and an opt-in live runtime runner.
 - `research/`: source identities, validation methods, and sanitized synthetic outputs.
-- `dist/individualizer-1.2.0.zip`: the skill folder only, suitable for extraction or supported import flows.
+- `dist/individualizer-1.3.0.zip`: the skill folder only, suitable for extraction or supported import flows.
 - `work/`, `source/`, `profiles/`, and `IMPORT-STATUS.md`: private/local material, excluded from version control.
 
 ## Validation and packaging

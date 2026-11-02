@@ -2,7 +2,7 @@
 
 ID: [slug]
 Profile version: 1.0.0
-Schema version: 1.1
+Schema version: 1.2
 Status: Draft — pending approval
 Primary language: [language or unspecified]
 
@@ -20,6 +20,11 @@ Primary language: [language or unspecified]
 
 ## Editorial preferences
 [Preferred edit depth, contextual review phrases, explicit prohibitions, protected terms, exceptions, and source-preservation constraints]
+
+## Learning from revisions
+Mode: review. Automatic updates: not authorized.
+
+[Active rules with IDs, language/context scope, approval provenance, and concise evidence. Keep candidates separate; none are active by default. Record explicit instructions or standing authorization accurately. Do not include full private drafts.]
 
 ## Visual system
 [Color roles, type hierarchy and fallbacks, grid, motif if any, and imagery rules]

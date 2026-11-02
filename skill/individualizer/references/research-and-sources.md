@@ -34,3 +34,5 @@ A brief or approved sample can override generic style preferences. New facts, in
 Reusable identity is now connected to locale-specific choices and medium-specific production. Document/image renderers remain host capabilities. A role token does not itself ensure correct rendering.
 
 Structural/profile checks, author-reviewed examples, and small live Codex and Claude Code smoke tests support this revision. Automatic selection was observed on English and German requests in both hosts. These are agent-reviewed checks, not blinded reader comparisons or proof of broad language quality. See the [repository validation record](https://github.com/qubit85/individualizer/blob/main/research/VALIDATION.md) for methods, an output-format correction, and remaining limits.
+
+Version 1.3 adds original guidance for learning scoped preferences from user revisions, with explicit or standing authorization and private profile persistence. Live profile-learning checks and their remaining text-fidelity limitation are documented in the repository validation record; they do not establish general model reliability.

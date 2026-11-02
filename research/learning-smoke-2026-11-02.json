@@ -1,0 +1,318 @@
+{
+  "date": "2026-11-02",
+  "skill_version": "1.3.0",
+  "evaluation": "Agent-reviewed live smoke tests; not blinded human evaluation.",
+  "total_live_phase_executions_including_development_attempts": 19,
+  "method": "Each phase starts a fresh default-model CLI session; only a synthetic writable profile persists between phases. Inputs are in tests/learning-scenarios.json; no expected answers are passed. Selected sanitized outputs are included here.",
+  "development_findings": [
+    "Initial recall mixed source information and Claude added unsupported operational advice. Clarified style-versus-fact transfer and made artifact independence explicit in the scenario; the full rerun preserved the separate factual inputs.",
+    "Initial Claude learning/forgetting did not reread both saved files. Added an entrypoint checkpoint; the full rerun includes observed rereads in both runtimes.",
+    "A warmer German email acquired an unsupported mir recipient. Codex passed the targeted check after clarifying roles. Claude still added mir in both targeted follow-ups, including after the German-guide clarification. This fidelity failure remains open despite correct profile behavior."
+  ],
+  "limits": [
+    "Small synthetic sample, selected scenarios, and no baseline or blind human study.",
+    "Current artifacts include separate hashes for the full sequence and later targeted refinements; the entire sequence was not repeated after every wording change.",
+    "Session/review-mode decisions, contradictory lasting preferences, concurrent write failures, other languages, and rendered media were not live-tested.",
+    "The synthetic snapshot fixtures preserve test evidence locally; real profile forgetting must not create such backups."
+  ],
+  "runs": [
+    {
+      "runtime": "codex",
+      "cli_version": "codex-cli 0.166.0-alpha.5.1",
+      "model": "configured default; not reported",
+      "phase": "learn",
+      "run": "codex-20261102T203207796331Z",
+      "skill_entrypoint_sha256": "739ec02d69426e9d92b15ef4b0a9bb20f6d22a709a34e1b1e12bc2e930caf86d",
+      "german_guide_sha256": "c07d8d4506003dc9cd3131ba89ad966d52aca85c1d638b31184092a1ee997eeb",
+      "variant": "full sequence after fact-boundary clarification",
+      "profile_schema_valid": true,
+      "unrelated_fields_preserved": true,
+      "profile_pair_unchanged": false,
+      "private_files": [
+        "STYLE.md",
+        "profile.json"
+      ],
+      "profile_version": "1.0.1",
+      "active_rule_ids": [
+        "en-support-greeting",
+        "de-linkedin-direct-opening"
+      ],
+      "output": "Der Test dauert drei Tage. Ein Ergebnis liegt noch nicht vor.\n\nDie Präferenz für einen direkten Einstieg in deutsche LinkedIn-Posts für Fachkollegen ist im privaten Profil gespeichert.",
+      "learned_rules": [
+        {
+          "id": "de-linkedin-direct-opening",
+          "instruction": "Beginne deutsche LinkedIn-Posts für Fachkollegen direkt mit der Sachinformation und lasse allgemeine rhetorische Einstiegsfragen weg.",
+          "scope": {
+            "languages": [
+              "de"
+            ],
+            "contexts": [
+              "LinkedIn-Posts für Fachkollegen"
+            ]
+          },
+          "status": "active",
+          "approval": "standing",
+          "approval_source": "Nutzer hat automatisches Lernen aus Stilkorrekturen für dieses Profil freigegeben.",
+          "evidence": [
+            {
+              "kind": "user_revision",
+              "summary": "In zwei verschiedenen deutschen LinkedIn-Posts entfernte der Nutzer jeweils eine rhetorische Einstiegsfrage und beließ die Sachinformationen."
+            }
+          ]
+        }
+      ],
+      "review": "Pass for the stated learning/profile behavior in developing-agent review."
+    },
+    {
+      "runtime": "codex",
+      "cli_version": "codex-cli 0.166.0-alpha.5.1",
+      "model": "configured default; not reported",
+      "phase": "recall",
+      "run": "codex-20261102T203207796331Z",
+      "skill_entrypoint_sha256": "739ec02d69426e9d92b15ef4b0a9bb20f6d22a709a34e1b1e12bc2e930caf86d",
+      "german_guide_sha256": "c07d8d4506003dc9cd3131ba89ad966d52aca85c1d638b31184092a1ee997eeb",
+      "variant": "full sequence after fact-boundary clarification",
+      "profile_schema_valid": true,
+      "unrelated_fields_preserved": true,
+      "profile_pair_unchanged": true,
+      "private_files": [
+        "STYLE.md",
+        "profile.json"
+      ],
+      "profile_version": "1.0.1",
+      "active_rule_ids": [
+        "en-support-greeting",
+        "de-linkedin-direct-opening"
+      ],
+      "output": {
+        "linkedin_de": "Zwei Personen fanden die Suche schneller. Messwerte fehlen noch.",
+        "support_en": "Hello,\n\nYour export may take two minutes.",
+        "interview_de": "Wie bewerten Sie das vorläufige Ergebnis?"
+      },
+      "review": "Pass for the stated learning/profile behavior in developing-agent review."
+    },
+    {
+      "runtime": "codex",
+      "cli_version": "codex-cli 0.166.0-alpha.5.1",
+      "model": "configured default; not reported",
+      "phase": "one-off",
+      "run": "codex-20261102T203207796331Z",
+      "skill_entrypoint_sha256": "739ec02d69426e9d92b15ef4b0a9bb20f6d22a709a34e1b1e12bc2e930caf86d",
+      "german_guide_sha256": "c07d8d4506003dc9cd3131ba89ad966d52aca85c1d638b31184092a1ee997eeb",
+      "variant": "full sequence after fact-boundary clarification",
+      "profile_schema_valid": true,
+      "unrelated_fields_preserved": true,
+      "profile_pair_unchanged": true,
+      "private_files": [
+        "STYLE.md",
+        "profile.json"
+      ],
+      "profile_version": "1.0.1",
+      "active_rule_ids": [
+        "en-support-greeting",
+        "de-linkedin-direct-opening"
+      ],
+      "output": "Bitte senden Sie mir die Datei bis Freitag. Vielen Dank dafür.",
+      "profile_behavior": "pass: no persistent change",
+      "text_fidelity": "needs revision: unsupported recipient added"
+    },
+    {
+      "runtime": "codex",
+      "cli_version": "codex-cli 0.166.0-alpha.5.1",
+      "model": "configured default; not reported",
+      "phase": "forget",
+      "run": "codex-20261102T203207796331Z",
+      "skill_entrypoint_sha256": "739ec02d69426e9d92b15ef4b0a9bb20f6d22a709a34e1b1e12bc2e930caf86d",
+      "german_guide_sha256": "c07d8d4506003dc9cd3131ba89ad966d52aca85c1d638b31184092a1ee997eeb",
+      "variant": "full sequence after fact-boundary clarification",
+      "profile_schema_valid": true,
+      "unrelated_fields_preserved": true,
+      "profile_pair_unchanged": false,
+      "private_files": [
+        "STYLE.md",
+        "profile.json"
+      ],
+      "profile_version": "1.0.2",
+      "active_rule_ids": [
+        "en-support-greeting"
+      ],
+      "output": "Gespeichert: Die betreffende Einstiegsregel und ihre Belege wurden aus beiden Profildateien entfernt. Die englische Support-Vorgabe und die übrigen Profilfelder bleiben erhalten. Das Profil steht nun auf Version 1.0.2.",
+      "review": "Pass for the stated learning/profile behavior in developing-agent review."
+    },
+    {
+      "runtime": "codex",
+      "cli_version": "codex-cli 0.166.0-alpha.5.1",
+      "model": "configured default; not reported",
+      "phase": "one-off",
+      "run": "codex-20261102T203507931561Z",
+      "skill_entrypoint_sha256": "236a0a21768c131a4ce8a44283adb31005eca8546833cc25c908797c5cd8a86a",
+      "german_guide_sha256": "c07d8d4506003dc9cd3131ba89ad966d52aca85c1d638b31184092a1ee997eeb",
+      "variant": "targeted follow-up",
+      "profile_schema_valid": true,
+      "unrelated_fields_preserved": true,
+      "profile_pair_unchanged": true,
+      "private_files": [
+        "STYLE.md",
+        "profile.json"
+      ],
+      "profile_version": "1.0.0",
+      "active_rule_ids": [
+        "en-support-greeting"
+      ],
+      "output": "Bitte senden Sie die Datei bis Freitag. Vielen Dank.",
+      "profile_behavior": "pass: no persistent change",
+      "text_fidelity": "pass for stated constraints in this sample"
+    },
+    {
+      "runtime": "claude",
+      "cli_version": "2.1.289 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "phase": "learn",
+      "run": "claude-20261102T203213510236Z",
+      "skill_entrypoint_sha256": "739ec02d69426e9d92b15ef4b0a9bb20f6d22a709a34e1b1e12bc2e930caf86d",
+      "german_guide_sha256": "c07d8d4506003dc9cd3131ba89ad966d52aca85c1d638b31184092a1ee997eeb",
+      "variant": "full sequence after fact-boundary clarification",
+      "profile_schema_valid": true,
+      "unrelated_fields_preserved": true,
+      "profile_pair_unchanged": false,
+      "private_files": [
+        "STYLE.md",
+        "profile.json"
+      ],
+      "profile_version": "1.1.0",
+      "active_rule_ids": [
+        "en-support-greeting",
+        "de-linkedin-no-opening-question"
+      ],
+      "output": "Der Post ohne Einstiegsfrage:\n\nDer Test dauert drei Tage. Ein Ergebnis liegt noch nicht vor.\n\nIch habe aus deinen beiden Überarbeitungen eine Regel gelernt und im Profil gespeichert (Version 1.1.0). Sie gilt für deutsche LinkedIn-Posts an Fachkollegen: kein rhetorischer Einstieg, sondern direkt die erste Sachaussage. Beide Dateien, `private/profile.json` und `private/STYLE.md`, habe ich danach neu gelesen. Sie stimmen überein. Einen JSON-Schema-Validator habe ich nicht ausgeführt.",
+      "learned_rules": [
+        {
+          "id": "de-linkedin-no-opening-question",
+          "instruction": "Deutsche LinkedIn-Posts für Fachkollegen ohne rhetorische Einstiegsfrage beginnen; direkt mit der ersten Sachaussage starten und keinen Ersatzsatz mit neuen Behauptungen ergänzen.",
+          "scope": {
+            "languages": [
+              "de"
+            ],
+            "contexts": [
+              "LinkedIn posts for peers"
+            ]
+          },
+          "status": "active",
+          "approval": "standing",
+          "approval_source": "Standing authorization for automatic learning from style corrections in this profile.",
+          "evidence": [
+            {
+              "kind": "user_revision",
+              "summary": "In einem ersten deutschen LinkedIn-Post strich der Nutzer die rhetorische Einstiegsfrage und behielt die Sachsätze."
+            },
+            {
+              "kind": "user_revision",
+              "summary": "In einem zweiten, anderen deutschen LinkedIn-Post strich der Nutzer ebenfalls die rhetorische Einstiegsfrage und behielt die Sachsätze."
+            }
+          ]
+        }
+      ],
+      "review": "Pass for the stated learning/profile behavior in developing-agent review."
+    },
+    {
+      "runtime": "claude",
+      "cli_version": "2.1.289 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "phase": "recall",
+      "run": "claude-20261102T203213510236Z",
+      "skill_entrypoint_sha256": "739ec02d69426e9d92b15ef4b0a9bb20f6d22a709a34e1b1e12bc2e930caf86d",
+      "german_guide_sha256": "c07d8d4506003dc9cd3131ba89ad966d52aca85c1d638b31184092a1ee997eeb",
+      "variant": "full sequence after fact-boundary clarification",
+      "profile_schema_valid": true,
+      "unrelated_fields_preserved": true,
+      "profile_pair_unchanged": true,
+      "private_files": [
+        "STYLE.md",
+        "profile.json"
+      ],
+      "profile_version": "1.1.0",
+      "active_rule_ids": [
+        "en-support-greeting",
+        "de-linkedin-no-opening-question"
+      ],
+      "output": {
+        "linkedin_de": "Zwei Personen fanden die Suche schneller. Messwerte fehlen noch.",
+        "support_en": "Hello,\n\nYour export may take two minutes.\n\nBest regards",
+        "interview_de": "Wie bewerten Sie das vorläufige Ergebnis?"
+      },
+      "review": "Pass for the stated learning/profile behavior in developing-agent review."
+    },
+    {
+      "runtime": "claude",
+      "cli_version": "2.1.289 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "phase": "one-off",
+      "run": "claude-20261102T203213510236Z",
+      "skill_entrypoint_sha256": "739ec02d69426e9d92b15ef4b0a9bb20f6d22a709a34e1b1e12bc2e930caf86d",
+      "german_guide_sha256": "c07d8d4506003dc9cd3131ba89ad966d52aca85c1d638b31184092a1ee997eeb",
+      "variant": "full sequence after fact-boundary clarification",
+      "profile_schema_valid": true,
+      "unrelated_fields_preserved": true,
+      "profile_pair_unchanged": true,
+      "private_files": [
+        "STYLE.md",
+        "profile.json"
+      ],
+      "profile_version": "1.1.0",
+      "active_rule_ids": [
+        "en-support-greeting",
+        "de-linkedin-no-opening-question"
+      ],
+      "output": "Sehr geehrte Damen und Herren,\n\nvielen Dank für Ihre Unterstützung. Bitte senden Sie mir die Datei bis Freitag.\n\nHerzliche Grüße",
+      "profile_behavior": "pass: no persistent change",
+      "text_fidelity": "needs revision: unsupported recipient added"
+    },
+    {
+      "runtime": "claude",
+      "cli_version": "2.1.289 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "phase": "forget",
+      "run": "claude-20261102T203213510236Z",
+      "skill_entrypoint_sha256": "739ec02d69426e9d92b15ef4b0a9bb20f6d22a709a34e1b1e12bc2e930caf86d",
+      "german_guide_sha256": "c07d8d4506003dc9cd3131ba89ad966d52aca85c1d638b31184092a1ee997eeb",
+      "variant": "full sequence after fact-boundary clarification",
+      "profile_schema_valid": true,
+      "unrelated_fields_preserved": true,
+      "profile_pair_unchanged": false,
+      "private_files": [
+        "STYLE.md",
+        "profile.json"
+      ],
+      "profile_version": "1.2.0",
+      "active_rule_ids": [
+        "en-support-greeting"
+      ],
+      "output": "Die erlernte Einstiegspräferenz für deutsche LinkedIn-Posts ist aus `private/profile.json` und `private/STYLE.md` entfernt. Ich habe beide Dateien danach neu gelesen. Sie stimmen überein und enthalten nichts mehr von der Regel. Einen JSON-Validator habe ich nicht ausgeführt.\n\n- **Entfernt:** die Regel mit ihrem Wortlaut, ihrem Geltungsbereich, der Genehmigungsangabe und beiden gespeicherten Belegen. Auch der alte Changelog-Eintrag, der die Regel namentlich nannte, ist weg.\n- **Versionsnummer:** Sie steht jetzt auf 1.2.0. Der neue Changelog-Eintrag lautet nur „Removed a learned rule and its evidence at user request.“ und enthält keinen Inhalt der gelöschten Regel. Es gibt keine Kopie oder ein Backup.\n- **Bewahrt:** die englische Support-Vorgabe (`en-support-greeting`, „Hello,“) mit ihren Belegen, die Lernmodus-Einstellungen (automatisch, genehmigt), die Farbpalette, die Editorial-Felder und die `customer_extension`.\n- **Nicht angefasst:** alle anderen Dateien.\n\nNicht löschen kann ich Kopien außerhalb dieser Dateien, etwa bestehende externe Backups oder den Chatverlauf.",
+      "review": "Pass for the stated learning/profile behavior in developing-agent review."
+    },
+    {
+      "runtime": "claude",
+      "cli_version": "2.1.289 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "phase": "one-off",
+      "run": "claude-20261102T203639382752Z",
+      "skill_entrypoint_sha256": "236a0a21768c131a4ce8a44283adb31005eca8546833cc25c908797c5cd8a86a",
+      "german_guide_sha256": "543d879bc3f7249be4ff2d7315af12038db9dbb5deeaad67a32286af287665c1",
+      "variant": "targeted follow-up",
+      "profile_schema_valid": true,
+      "unrelated_fields_preserved": true,
+      "profile_pair_unchanged": true,
+      "private_files": [
+        "STYLE.md",
+        "profile.json"
+      ],
+      "profile_version": "1.0.0",
+      "active_rule_ids": [
+        "en-support-greeting"
+      ],
+      "output": "Bitte senden Sie mir die Datei bis Freitag. Vielen Dank.",
+      "profile_behavior": "pass: no persistent change",
+      "text_fidelity": "needs revision: unsupported recipient added"
+    }
+  ]
+}

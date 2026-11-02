@@ -1,4 +1,4 @@
-# Individualizer 1.2.0
+# Individualizer 1.3.0
 
 Develop a personal or brand voice, edit formulaic prose, and apply an approved identity across text and visuals. English and German have dedicated guides; other languages use locale-aware adaptation.
 
@@ -19,9 +19,15 @@ See the [project repository](https://github.com/qubit85/individualizer) for setu
 
 ## Profiles and boundaries
 
-Keep private profiles outside this package and any public repository. [Profile schema 1.1](references/profile-schema.md) accepts existing 1.0 profiles. The templates are unapproved scaffolds, not a default personality or palette.
+Keep private profiles outside this package and any public repository. [Profile schema 1.2](references/profile-schema.md) accepts existing 1.0 and 1.1 profiles. The templates are unapproved scaffolds, not a default personality or palette.
 
 Meaning, qualifications, protected content, and the author's voice take priority over style. Phrase lists are review cues, not global bans. The skill does not detect authorship, guarantee native quality, or promise detector evasion. Visual output still requires rendering and inspection with appropriate host tools.
+
+## Learning from feedback
+
+The next revision incorporates the user's corrections and keeps earlier feedback intact. For lasting preferences, [Learning from revisions](references/learning-from-revisions.md) separates session-only adaptation, review before saving, and explicitly authorized automatic updates. Rules retain their language/context scope and evidence; a factual correction or one-off tone change is not a global style preference.
+
+Saved learning lives in the selected private profile, not in the shared skill or model weights. Users can inspect, revise, disable, or forget it. Cross-chat reuse requires an accessible profile; no automatic mode is enabled merely by installing the skill.
 
 ## Contents and license
 

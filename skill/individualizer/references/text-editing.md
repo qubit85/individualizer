@@ -12,6 +12,8 @@ Respect an explicit depth; otherwise choose the least intervention that solves t
 
 For a narrow request, edit only the requested span plus any necessary grammatical connection. Existing natural prose may need no change.
 
+For a revision of an existing draft, use [Learning from revisions](learning-from-revisions.md): carry forward the user's prior corrections, identify the new feedback, and check the result against both. When a profile is selected, apply its active learned rules only in their matching language and context.
+
 ## Four passes
 
 1. **Meaning inventory.** Identify the claims, limits, evidence, intended action, and immutable spans. A short piece needs only a mental inventory; use an explicit checklist for dense or consequential text. Distinguish unsupported promotional assertions from supported facts.

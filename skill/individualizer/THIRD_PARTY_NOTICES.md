@@ -1,6 +1,6 @@
 # Third-party notices
 
-Individualizer 1.2.0 contains newly written instructions and original examples. The editorial workflow adapts ideas from the following MIT-licensed skills; their full notices are retained:
+Individualizer 1.3.0 contains newly written instructions and original examples. The editorial workflow adapts ideas from the following MIT-licensed skills; their full notices are retained:
 
 - [blader/humanizer](https://github.com/blader/humanizer): contextual pattern review and a semantic fidelity pass. Copyright (c) 2025 Siqi Chen. See licenses/humanizer.txt.
 - [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills): scoped editing and focused review passes, selectively adapted without mandatory conversion marketing. Copyright (c) 2025 Corey Haines. See licenses/marketingskills.txt.

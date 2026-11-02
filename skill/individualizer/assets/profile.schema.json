@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Individualizer profile 1.0/1.1",
+  "title": "Individualizer profile 1.0/1.1/1.2",
   "type": "object",
   "required": [
     "schema_version",
@@ -22,7 +22,8 @@
     "schema_version": {
       "enum": [
         "1.0",
-        "1.1"
+        "1.1",
+        "1.2"
       ]
     },
     "id": {
@@ -371,6 +372,181 @@
           }
         }
       }
+    },
+    "learning": {
+      "type": "object",
+      "required": [
+        "mode",
+        "automatic_updates_approved",
+        "rules"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "session",
+            "review",
+            "automatic"
+          ]
+        },
+        "automatic_updates_approved": {
+          "type": "boolean"
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "instruction",
+              "scope",
+              "status",
+              "approval",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              },
+              "instruction": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scope": {
+                "type": "object",
+                "required": [
+                  "languages",
+                  "contexts"
+                ],
+                "properties": {
+                  "languages": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "contexts": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              },
+              "status": {
+                "enum": [
+                  "candidate",
+                  "active",
+                  "rejected",
+                  "superseded"
+                ]
+              },
+              "approval": {
+                "enum": [
+                  "none",
+                  "explicit",
+                  "standing"
+                ]
+              },
+              "approval_source": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "kind",
+                    "summary"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "enum": [
+                        "explicit_preference",
+                        "user_revision"
+                      ]
+                    },
+                    "summary": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "source_ref": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "supersedes": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "status": {
+                      "const": "active"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "approval_source"
+                  ],
+                  "properties": {
+                    "approval": {
+                      "enum": [
+                        "explicit",
+                        "standing"
+                      ]
+                    },
+                    "approval_source": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "automatic"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "automatic_updates_approved": {
+                "const": true
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "allOf": [

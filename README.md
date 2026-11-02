@@ -56,18 +56,33 @@ Install paths and invocation follow the [Codex skill documentation](https://lear
 - Edits in light, standard, or deep passes while preserving factual meaning.
 - Treats common AI wording as contextual review cues, not a blacklist.
 - Builds a voice from examples and user choices, without inventing personal experience.
+- Learns scoped style preferences from user revisions and carries earlier corrections into the next draft.
 - Separates persistent identity from the tone of a particular artifact.
 - Defines visual roles and checks consistency across formats.
 - Keeps private profiles outside the distributed package.
 
 The workflow does not promise detector evasion or universal native-speaker quality. Meaning, uncertainty, quotations, code, and attribution take precedence over stylistic changes. Actual image and document creation depends on the host's tools; a style specification alone is not a rendered artifact.
 
+## Learn from revisions
+
+Individualizer compares your feedback and revised wording with the previous draft. It applies corrections immediately and checks that later versions do not reintroduce rejected habits. Factual corrections and one-off tone changes stay separate from lasting style preferences.
+
+For use across chats, select a private profile and its learning mode:
+
+- **Session:** adapt during the conversation without automatically saving new preferences.
+- **Review (default):** propose useful lasting preferences; save them when you approve. “Remember this for future support emails” is already approval for that scoped change.
+- **Automatic:** once you authorize learning for the selected profile, save clear lasting preferences and consistent patterns in your corrections without asking after every edit.
+
+For example: “Bei meinen deutschen LinkedIn-Posts künftig ohne rhetorische Einstiegsfrage.” The rule applies to that context; it does not prohibit questions in interviews or English texts. You can inspect, change, or forget a learned rule, or stop automatic updates.
+
+Learning is stored in your private profile, with scope and concise evidence. The skill does not retrain the underlying model or modify the shared instructions. Without an accessible saved profile, learning is limited to the available conversation. Read [Learning from revisions](skill/individualizer/references/learning-from-revisions.md) for the full workflow.
+
 ## Package and development
 
-The current skill version is **1.2.0**. The profile schema remains **1.1**, with support for existing 1.0 profiles. The skill itself needs no Python dependency, external skill bundle, or additional API key; you still need access to your chosen host.
+The current skill version is **1.3.0**. The profile schema is **1.2**, with support for existing 1.0 and 1.1 profiles. The skill itself needs no Python dependency, external skill bundle, or additional API key; you still need access to your chosen host.
 
 - [Skill entrypoint](skill/individualizer/SKILL.md)
-- [Packaged skill ZIP](dist/individualizer-1.2.0.zip)
+- [Packaged skill ZIP](dist/individualizer-1.3.0.zip)
 - [Editing and language guides](skill/individualizer/references/text-editing.md)
 - [Profile contract](skill/individualizer/references/profile-schema.md)
 - [Research and source decisions](skill/individualizer/references/research-and-sources.md)

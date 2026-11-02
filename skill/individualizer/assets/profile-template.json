@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "id": "new-identity",
   "name": "New identity",
   "version": "1.0.0",
@@ -43,5 +43,10 @@
     "protected_terms": [],
     "phrase_exceptions": []
   },
-  "samples": []
+  "samples": [],
+  "learning": {
+    "mode": "review",
+    "automatic_updates_approved": false,
+    "rules": []
+  }
 }

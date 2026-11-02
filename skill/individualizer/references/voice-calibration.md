@@ -26,4 +26,4 @@ The approved profile should contain examples that demonstrate the rules, plus ex
 
 ## Evolve carefully
 
-A request such as “make this email warmer” changes this email. “Use a warmer tone for all future support replies” authorizes a profile change in that context. Update JSON and Markdown together, preserve unrelated preferences, and record the change. Never promote a generated demonstration to approved status without user confirmation.
+A request such as “make this email warmer” changes this email. “Use a warmer tone for all future support replies” authorizes a profile change in that context. For revision loops, recurring corrections, and previously authorized automatic updates, use [Learning from revisions](learning-from-revisions.md). Apply feedback to the next draft immediately; preserve its scope when saving. Update JSON and Markdown together, preserve unrelated preferences, and record the change. Never promote a generated demonstration to approved status without user confirmation.

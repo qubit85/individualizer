@@ -1,8 +1,8 @@
-# Portable profile contract, schema 1.1
+# Portable profile contract, schema 1.2
 
 Store synchronized STYLE.md and profile.json in a user-selected private location outside the distributed skill by default. JSON is the structured record; Markdown explains the same choices. Do not silently choose a public repository as storage.
 
-Use assets/profile-template.json and assets/profile-template.md as scaffolds. Neither is an approved style. The JSON Schema in assets/profile.schema.json accepts both schema versions 1.0 and 1.1. Any JSON Schema draft 2020-12 validator can check it; a validator is optional at runtime. Without one, parse the JSON and check the following invariants explicitly.
+Use assets/profile-template.json and assets/profile-template.md as scaffolds. Neither is an approved style. The JSON Schema in assets/profile.schema.json accepts schema versions 1.0, 1.1, and 1.2. Any JSON Schema draft 2020-12 validator can check it; a validator is optional at runtime. Without one, parse the JSON and check the following invariants explicitly.
 
 ## Core invariants
 
@@ -32,14 +32,32 @@ Select settings by exact locale, then language, then relevant existing profile r
 
 A generated sample remains unapproved until the user chooses it. An approved third-party reference is an approved inspiration, not proof of the user's personal experience.
 
-## Existing v1.0 profiles
+## Optional 1.2 learning extension
 
-Read them as they stand. Do not require new fields, reset their version, or infer locale settings. On a requested profile update, preserve the original, add only supported settings, change schema_version to 1.1 if the new extensions are adopted, and increment the profile version appropriately. Log the actual changed fields and date only when known. Keep STYLE.md synchronized.
+Follow [Learning from revisions](learning-from-revisions.md) for decisions about evidence, authorization, scope, and persistence. The `learning` block contains:
+
+| Field | Meaning |
+| --- | --- |
+| mode | `session`, `review`, or `automatic`; absent block means `review` |
+| automatic_updates_approved | True only after the user authorized automatic learning for this profile; required true in automatic mode |
+| rules | Scoped preference records; an empty list learns no default personality |
+
+Each rule requires `id`, `instruction`, `scope`, `status`, `approval`, and `evidence`. Scope has nonempty `languages` and `contexts` lists. Use language/locale values such as `de` or `en-GB` and understandable contexts such as `LinkedIn posts for peers`; `*` means an explicitly authorized shared scope, not unknown. Status is `candidate`, `active`, `rejected`, or `superseded`. Approval is `none`, `explicit`, or `standing`; an active rule requires the latter two and a nonempty `approval_source` describing the actual authorization.
+
+Evidence entries contain a `kind` of `explicit_preference` or `user_revision`, a concise `summary`, and optionally a private `source_ref`. Generated examples are not learning evidence by themselves. Optional `supersedes` references earlier rule IDs. Keep rule IDs unique, resolve such references, and avoid contradictory active rules in the same scope; these semantic checks go beyond JSON Schema.
+
+The profile's `approved_by_user` describes the baseline identity's approval. A learned rule's provenance separately records whether the user approved that rule directly or authorized the automatic process. Changing the learning mode does not retroactively relabel standing approvals as explicit approvals. Pending rules never become effective merely because the enclosing profile is approved.
+
+On load, apply active rules in the matching language and context, alongside the relevant baseline. On save, synchronize rule IDs, scope, status, and authorization in STYLE.md and profile.json. A schema validator cannot verify whether evidence is real or a rule is appropriate.
+
+## Existing v1.0 and v1.1 profiles
+
+Read them as they stand. Do not require new fields, reset their version, or infer locale settings. On an authorized learning update, preserve existing content and extensions, adopt schema_version 1.2 when adding the learning block, and increment the profile version appropriately. Do not create an unrequested backup of private material. Log the actual changed fields and date only when known. Keep STYLE.md synchronized.
 
 The legacy voice.avoid_phrases is a preference field; do not silently promote every entry to a strict ban. Resolve material conflicts with current user intent.
 
 ## Approval and changes
 
-A request to revise an artifact does not authorize changing the persistent identity. If a previously approved profile is being explored without final approval, retain the approved version and save a separate draft candidate. When approval arrives, commit the approved update and changelog together.
+A request to revise an artifact adapts that artifact immediately. Persistent changes require an explicit instruction or a previously approved automatic-learning mode covering that update; do not request permission again when it is already present. Without that authorization, keep proposals in the conversation, or in a separate private draft only if saving a draft was authorized. When approval arrives, save the accepted update and changelog together.
 
 Compare JSON and Markdown after writing, including examples, vocabulary exceptions, and language settings. Schema validation alone cannot detect a contradiction between those two files.
